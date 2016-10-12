@@ -1,12 +1,20 @@
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Insets;
 import java.util.Random;
+
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class MyPanel1 extends JPanel{
-	
+	JButton reset = new JButton();	
+	JButton [][] buttons = new JButton [TOTAL_COLUMNS][TOTAL_ROWS];
+	int [][] counts = new int [TOTAL_COLUMNS][TOTAL_ROWS];
+	Container grid = new Container();
+	//NewButtonsGrid
+
 	static final long serialVersionUID = 1L;
 	private static final int GRID_X = 16;
 	private static final int GRID_Y = 25;
@@ -21,7 +29,11 @@ public class MyPanel1 extends JPanel{
 	public Color[][] colorArray = new Color[TOTAL_COLUMNS][TOTAL_ROWS];
 	public int MinesAround[][] = new int[TOTAL_COLUMNS][TOTAL_ROWS];
 	//static public MineCoordinates Mines;
-			
+	
+	
+	
+	
+	
 	public MyPanel1() {   // Contructor
 
 		if (INNER_CELL_SIZE + (new Random()).nextInt(1) < 1) {	
@@ -34,10 +46,13 @@ public class MyPanel1 extends JPanel{
 			throw new RuntimeException("TOTAL_ROWS must be at least 3!");
 		}
 		
-		for (int x = 0; x < TOTAL_COLUMNS; x++) {   // 9x9 Grid
+		for (int x = 0; x < TOTAL_COLUMNS; x++) {   
 			for (int y = 0; y < TOTAL_ROWS; y++) {
-				colorArray[x][y] = Color.WHITE;
+				colorArray[x][y] = Color.LIGHT_GRAY;
+			
 				MinesAround[x][y] = 0;
+				
+	
 				}
 			}
 		
@@ -56,12 +71,12 @@ public class MyPanel1 extends JPanel{
 		int height = y2 - y1;
 
 		//Paint the background
-		g.setColor(Color.BLUE);
+		g.setColor(Color.GRAY);
 		g.fillRect(x1, y1, width + 1, height + 1);
 
 		//By default, the grid will be 9x9 
 		g.setColor(Color.BLACK);
-		for (int y = 0; y <= TOTAL_ROWS - 1; y++) {
+		for (int y = 0; y <= TOTAL_ROWS -1; y++) {
 			g.drawLine(x1 + GRID_X, y1 + GRID_Y + (y * (INNER_CELL_SIZE + 1)), x1 + GRID_X + ((INNER_CELL_SIZE + 1) * TOTAL_COLUMNS), y1 + GRID_Y + (y * (INNER_CELL_SIZE + 1)));
 		}
 		for (int x = 0; x <= TOTAL_COLUMNS; x++) {

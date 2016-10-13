@@ -1,132 +1,115 @@
 import java.util.Random;
 
-public class MinesPosition // 
-{
+public class MinesPosition{
 	
-	private Coordinates[] mineCoords;
+	private Coordinates [] MinesPosition ; 
 	
-	//MineCoordinates placement
 	
-	public Coordinates[] getMineCoordinates() 
+	public Coordinates [] getMinesPosition() 
+	
 	{
 		
-		return mineCoords;
 		
-	}
-
-
-	public MinesPosition(int length){
+		return MinesPosition;
+	}	
 		
-		mineCoords = new Coordinates[length];
+		public MinesPosition(int length)
+		{
+			
+			MinesPosition = new Coordinates[length];
 		
-	} 
-	
-	// Uses the Coordinates class to create coordinates with random numbers.
-	
-	private Coordinates CreateCoordinates() 
-	{
+		}
 		
+		
+	private Coordinates CreateCoordinates(){  //Fill the MinePositon array to create the Coordinates
 		Random rand = new Random();
-		
 		return new Coordinates(rand.nextInt(9), rand.nextInt(9));
 		
 	}
-	
-	// Fills up the MineCoordinates array with the use of the CreateCoordinates method.
-	
-	public void PopulateMineCoordinates() 
-	{
-		
-		
-		for(int i=0; i < mineCoords.length; i++)
-		{
-			mineCoords[i] = CreateCoordinates();
-			
-	}
-}
-
-
-
-
-// Method created to compare two different coordinates.
-
-public boolean CompareCoordinates(int x, int y, Coordinates b) 
+public void ScatterMineCoord()
 {
 	
-	return x == b.getX() && y == b.getY();
-			
-}	
-
-// Uses the CompareCoordinates method to compare the clicked grid coordinate with all the mines coordinates.
-
-public boolean CompareSelection(int x, int y)
-{ 
+	for (int bucky = 0; bucky < MinesPosition.length; bucky++)
+	{
+		
 	
-	for(int i=0; i < mineCoords.length; i++)
+	MinesPosition [bucky] = CreateCoordinates();
+	
+}
+}
+
+public boolean CompareCoord(int x, int y, Coordinates a) { // Method to compare two different coordinates
+		
+		return x == a.getX() && y == a.getY();
+				
+	}
+
+
+
+public boolean compareSelec(int x, int y ) 
+{
+	
+	for(int i=0; i < MinesPosition.length; i++)
 	{ 
 		
-		if(CompareCoordinates(x, y, mineCoords[i]))
+		if(CompareCoord(x, y, MinesPosition[i]))
 		{
 			
 			return true;
-			
-		}
-		
-	}
 	
-	return false;
+		}	
+}
+			return false;	
+}
+	public boolean neighboringMines( int i, int j)    //Mines nearby, Based on  Array Chapter 7.6.3
+	{
+		if(		compareSelec(i+1,j)|| 
+				compareSelec(i-1,j)	||
+				compareSelec(i,j+1)||
+				compareSelec(i,j-1)||
+				compareSelec(i-1,j-1)||
+				compareSelec(i+1,j+1)||
+				compareSelec(i-1,j+1)||
+				compareSelec(i+1,j-1))
+				{
+			return true;
+						
+				}
+		
+		
+		return false;
 	
 }
-
-// Checks if there's a mine nearby.
-
-public boolean MinesNearby(int x, int y) 
-{
-	
-	 if(CompareSelection(x+1, y) || 
-			   CompareSelection(x-1, y) ||
-			   CompareSelection(x, y-1) ||
-			   CompareSelection(x+1, y-1) ||
-			   CompareSelection(x-1, y-1) ||
-			   CompareSelection(x, y+1) ||
-			   CompareSelection(x+1, y+1) ||
-			   CompareSelection(x-1, y+1)){
-				
-				return true;
-				
-			} 
-			
-			 else return false;
-			
-		}
-		
-		
-		
-		public int MinesNearbyCounter(int x, int y) // Mine Counter
+// Next: The Counter Method	
+	public int  minesNearbyCounter(int  x, int y) 
+	{
+	 int counter = 0 ;
+	for (int i = x-1; i <= x+1; i++) 
+	{
+		for (int j = y-1; j <= y+1; j++) 
 		{
 			
-			int counter = 0;
+			if (!(i==x && j == y))
+		{
 			
-			for(int i = x-1; i <= x+1; i++)
+				if (compareSelec(i,j))
 			{
-				for(int j = y-1; j <= y+1; j++)
-				{
-					
-					
-					
-					if(!(i == x && j == y))
-					{
-					
-						if(CompareSelection(i, j))
-							counter++;
-						
-						}
-					}
-				}
+			counter++;	
+			}
 			
-			return counter;
+		}	
 			
 		}
-
-
+	}
+	
+	return counter;	
+	}
+		
 }
+
+
+	
+	
+
+
+

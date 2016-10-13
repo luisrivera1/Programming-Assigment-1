@@ -9,13 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class MyPanel1 extends JPanel{
-	JButton reset = new JButton();	
-	JButton [][] buttons = new JButton [TOTAL_COLUMNS][TOTAL_ROWS];
-	int [][] counts = new int [TOTAL_COLUMNS][TOTAL_ROWS];
-	Container grid = new Container();
-	//NewButtonsGrid
 
-	static final long serialVersionUID = 1L;
+
+    static final long serialVersionUID = 1L;
 	private static final int GRID_X = 16;
 	private static final int GRID_Y = 25;
 	private static final int INNER_CELL_SIZE = 40;

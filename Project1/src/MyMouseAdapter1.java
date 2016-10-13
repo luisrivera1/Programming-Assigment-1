@@ -8,7 +8,8 @@ import java.util.Random;
 import javax.swing.JFrame;
 
 public class MyMouseAdapter1 extends MouseAdapter {
-    private Random generator = new Random();
+    int numbFlags = 0;
+	private Random generator = new Random();
  //  Coordinates b = new Coordinates(3,2);
     public void mousePressed(MouseEvent e) {
         switch (e.getButton()) {
@@ -142,16 +143,24 @@ public class MyMouseAdapter1 extends MouseAdapter {
                              switch (generator.nextInt(1)) {
                              case 0:
                             	 if (myPanel2.colorArray[myPanel2.mouseDownGridX][myPanel2.mouseDownGridY].equals(Color.RED)){
-                            		newColor = Color.WHITE; 
+                            		newColor = Color.WHITE;
+                            		numbFlags = numbFlags - 1;
                             	 }
                             	 else
                             	 { 
-                                 newColor = Color.RED;
+                            		 if (numbFlags > 9)
+                            		 {
+                            			 newColor = Color.WHITE;
+                            		 }
+                            		 else
+                            		 {
+                            			 newColor = Color.RED;
+                            			 numbFlags = numbFlags + 1;
+                            		 }
                             	 }
                                  if (myPanel2.colorArray[myPanel2.mouseDownGridX][myPanel2.mouseDownGridY].equals(Color.LIGHT_GRAY)){
                              		newColor = Color.LIGHT_GRAY;}
                                  break;
- 
                              }
                              myPanel2.colorArray[myPanel2.mouseDownGridX][myPanel2.mouseDownGridY] = newColor;
                              myPanel2.repaint();

@@ -48,7 +48,7 @@ public class MyPanel1 extends JPanel{
 		
 		for (int x = 0; x < TOTAL_COLUMNS; x++) {   
 			for (int y = 0; y < TOTAL_ROWS; y++) {
-				colorArray[x][y] = Color.LIGHT_GRAY;
+				colorArray[x][y] = Color.WHITE;
 			
 				MinesAround[x][y] = 0;
 				

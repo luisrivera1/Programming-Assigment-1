@@ -95,7 +95,9 @@ public class MyMouseAdapter1 extends MouseAdapter {
                             Color newColor = null;
                             switch (generator.nextInt(1)) {
                             case 0:
-                                newColor = Color.WHITE;
+                                newColor = Color.LIGHT_GRAY;
+                                if (myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY].equals(Color.RED)){
+                            		newColor = Color.RED;}
                                 break;
                   
                             }
@@ -135,14 +137,21 @@ public class MyMouseAdapter1 extends MouseAdapter {
                  if ((grid_X == -1) || (grid_Y == -1)) {
                      //Is releasing outside
                      //Do nothing
-                 } else {
-                             
+                 } else { 
                              Color newColor = null;
                              switch (generator.nextInt(1)) {
                              case 0:
+                            	 if (myPanel2.colorArray[myPanel2.mouseDownGridX][myPanel2.mouseDownGridY].equals(Color.RED)){
+                            		newColor = Color.WHITE; 
+                            	 }
+                            	 else
+                            	 { 
                                  newColor = Color.RED;
+                            	 }
+                                 if (myPanel2.colorArray[myPanel2.mouseDownGridX][myPanel2.mouseDownGridY].equals(Color.LIGHT_GRAY)){
+                             		newColor = Color.LIGHT_GRAY;}
                                  break;
-                   
+ 
                              }
                              myPanel2.colorArray[myPanel2.mouseDownGridX][myPanel2.mouseDownGridY] = newColor;
                              myPanel2.repaint();

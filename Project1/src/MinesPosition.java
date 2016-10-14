@@ -34,7 +34,7 @@ public class MinesPosition
 			MinesPosition [bucky] = CreateCoordinates();
 
 		}
-			MinesPosition2= MinesPosition.clone();  
+		MinesPosition2= MinesPosition.clone();  
 
 		for (int i = 0; i < MinesPosition.length; i++) // This for loop is made to prevent having two mines right in top of each other.
 		{

@@ -94,7 +94,7 @@ public class MyPanel1 extends JPanel{
 			for (int y = 0; y < TOTAL_ROWS; y++) {
 				if ( (minesAround[x][y] != 0) && colorArray[x][y] != Color.BLACK) {
 					int counter = minesAround[x][y];
-					g.setColor(Color.CYAN);
+					g.setColor(Color.RED);
 					g.drawString(String.valueOf(counter), x1 + GRID_X + (x * (INNER_CELL_SIZE + 1)) + 10, y1 + GRID_Y + (y * (INNER_CELL_SIZE + 1)) + 20);
 					
 					}

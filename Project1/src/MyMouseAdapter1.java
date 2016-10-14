@@ -144,7 +144,7 @@ public class MyMouseAdapter1 extends MouseAdapter {
 	            		Color newColor = Color.BLACK;
 	            		Panel.colorArray[gridX][gridY] = newColor;
 		            	Panel.repaint();
-		            	
+		            	///
 		            	JOptionPane.showMessageDialog(myFrame,
 		            		    "Sorry, but you clicked on a mine.",
 		            		    "You lost!",

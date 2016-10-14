@@ -12,12 +12,10 @@ public class Main1 {
 		myFrame.setLocation(400, 150);
 		myFrame.setSize(400, 425);
 		
-		
-		
 		MyPanel1 myPanel = new MyPanel1();
 		myFrame.add(myPanel);
-
 		MyMouseAdapter1 myMouseAdapter = new MyMouseAdapter1();
+		
 		myFrame.addMouseListener(myMouseAdapter);
 		myMouseAdapter.MinesArray();
 		myFrame.setVisible(true);

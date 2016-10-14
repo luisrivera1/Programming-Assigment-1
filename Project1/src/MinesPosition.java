@@ -3,7 +3,7 @@ import java.util.Random;
 public class MinesPosition{
 	
 	private Coordinates [] MinesPosition ; 
-	
+	private Coordinates[] MinesPosition2;
 	
 	public Coordinates [] getMinesPosition() 
 	
@@ -17,7 +17,7 @@ public class MinesPosition{
 		{
 			
 			MinesPosition = new Coordinates[length];
-		
+			MinesPosition2 = new Coordinates[length];
 		}
 		
 		
@@ -36,7 +36,18 @@ public void ScatterMineCoord()
 	MinesPosition [bucky] = CreateCoordinates();
 	
 }
+	MinesPosition2= MinesPosition.clone();
+	
+	for (int i = 0; i < MinesPosition.length; i++) {
+		for (int j = 0; j < MinesPosition2.length-1; j++) {
+			if (MinesPosition[i]==MinesPosition2 [j+1]) {
+				MinesPosition[i]= CreateCoordinates();
+			}
+		}
+	}
+	
 }
+
 
 public boolean CompareCoord(int x, int y, Coordinates a) { // Method to compare two different coordinates
 		

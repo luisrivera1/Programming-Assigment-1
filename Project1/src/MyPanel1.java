@@ -24,6 +24,7 @@ public class MyPanel1 extends JPanel{
 	
 	public Color[][] colorArray = new Color[TOTAL_COLUMNS][TOTAL_ROWS];
 	public int minesAround[][] = new int[TOTAL_COLUMNS][TOTAL_ROWS];
+	public int counterInitialize=0;
 	static public MinesPosition Mines;
 	
 	
@@ -116,6 +117,7 @@ public void revealAdjacent(int x, int y){
          		 
          		colorArray[x][y] = Color.GRAY;
          		minesAround[x][y] = counter;
+         		counterInitialize++;
 	            repaint();
 	            	
 	            return;
@@ -128,7 +130,11 @@ public void revealAdjacent(int x, int y){
 					revealAdjacent(x-1, y);
 					revealAdjacent(x+1, y);
 					revealAdjacent(x, y-1);
-					revealAdjacent(x, y+1);}
+					revealAdjacent(x, y+1);
+					
+					counterInitialize++;
+					}
+			 
 }
 	
 	// GETTERS

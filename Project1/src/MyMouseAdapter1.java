@@ -120,6 +120,7 @@ public class MyMouseAdapter1 extends MouseAdapter {
 	            		Color newColor = Color.GRAY;
 	            		Panel.colorArray[gridX][gridY] = newColor;
 	            		Panel.minesAround[gridX][gridY] = counter;
+	            		Panel.counterInitialize++;
 		            	Panel.repaint();
 		            	
 		            	// Numbers should be shown here.
@@ -148,6 +149,7 @@ public class MyMouseAdapter1 extends MouseAdapter {
 		            		    "You lost!",
 		            		    JOptionPane.ERROR_MESSAGE);
 		            	myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		            	System.exit(0);
 	            		
 	            	}
 	            	
@@ -186,6 +188,11 @@ public class MyMouseAdapter1 extends MouseAdapter {
 		            // Toggles red flag.          
 		            
 		            if(gridX2 >= 0 && gridX2 <= 8 && gridY2 >= 0 && gridY2 <= 8) {
+		            	if (Panel2.counterInitialize>=74) {
+		            		JOptionPane.showMessageDialog(null, "Congratulations, YOU WIN!!!");
+		            		System.exit(0);
+							
+						}
 		            		
 		            		if(Panel2.colorArray[gridX2][gridY2].equals(Color.WHITE)){
 		            	

@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 public class MyMouseAdapter1 extends MouseAdapter
 {
-
+	int counterInitialize2 = 10; 
 	static public MinesPosition Mines = new MinesPosition(10);
 	public void mousePressed(MouseEvent e) 
 	{
@@ -174,6 +174,7 @@ public class MyMouseAdapter1 extends MouseAdapter
 					return;
 				}
 			}
+			
 
 			JFrame myFrame2 = (JFrame) c2;
 			MyPanel1 Panel2 = (MyPanel1) myFrame2.getContentPane().getComponent(0);
@@ -204,9 +205,15 @@ public class MyMouseAdapter1 extends MouseAdapter
 
 				if(Panel2.colorArray[gridX2][gridY2].equals(Color.WHITE))
 				{
-
-					Panel2.colorArray[gridX2][gridY2] = Color.RED;
-					Panel2.repaint();
+					if(counterInitialize2>0){
+	            		Panel2.colorArray[gridX2][gridY2] = Color.RED;
+		            	Panel2.repaint();
+		            	counterInitialize2--;
+	            	}
+	            	else if(counterInitialize2 == 0)
+	            	{
+	            		JOptionPane.showMessageDialog(c2, "You ran out of Flags");
+	            	}
 
 				}
 
@@ -221,7 +228,11 @@ public class MyMouseAdapter1 extends MouseAdapter
 
 					Panel2.colorArray[gridX2][gridY2] = Color.WHITE;
 					Panel2.repaint();
-
+					
+					if(counterInitialize2<10) // Flag Limiter 
+					{
+						counterInitialize2++;
+					}
 				}
 
 			}

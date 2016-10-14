@@ -8,10 +8,9 @@ import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class MyPanel1 extends JPanel{
-
-
-    static final long serialVersionUID = 1L;
+public class MyPanel1 extends JPanel
+{
+	static final long serialVersionUID = 1L;
 	private static final int GRID_X = 16;
 	private static final int GRID_Y = 25;
 	private static final int INNER_CELL_SIZE = 40;

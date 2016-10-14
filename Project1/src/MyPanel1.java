@@ -9,13 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class MyPanel1 extends JPanel{
-	JButton reset = new JButton();	
-	JButton [][] buttons = new JButton [TOTAL_COLUMNS][TOTAL_ROWS];
-	int [][] counts = new int [TOTAL_COLUMNS][TOTAL_ROWS];
-	Container grid = new Container();
-	//NewButtonsGrid
 
-	static final long serialVersionUID = 1L;
+
+    static final long serialVersionUID = 1L;
 	private static final int GRID_X = 16;
 	private static final int GRID_Y = 25;
 	private static final int INNER_CELL_SIZE = 40;
@@ -27,14 +23,18 @@ public class MyPanel1 extends JPanel{
 	public int mouseDownGridY = 0;
 	
 	public Color[][] colorArray = new Color[TOTAL_COLUMNS][TOTAL_ROWS];
-	public int MinesAround[][] = new int[TOTAL_COLUMNS][TOTAL_ROWS];
-	//static public MineCoordinates Mines;
+	public int minesAround[][] = new int[TOTAL_COLUMNS][TOTAL_ROWS];
+	static public MinesPosition Mines;
 	
 	
 	
 	
 	
+<<<<<<< HEAD
 	public MyPanel1() {   // Constructor
+=======
+	public MyPanel1() {   // The Constructor
+>>>>>>> origin/master
 
 		if (INNER_CELL_SIZE + (new Random()).nextInt(1) < 1) {	
 			throw new RuntimeException("INNER_CELL_SIZE must be positive!");
@@ -49,19 +49,17 @@ public class MyPanel1 extends JPanel{
 		for (int x = 0; x < TOTAL_COLUMNS; x++) {   
 			for (int y = 0; y < TOTAL_ROWS; y++) {
 				colorArray[x][y] = Color.WHITE;
-			
-				MinesAround[x][y] = 0;
+				minesAround[x][y] = 0;
 				
 	
 				}
 			}
-		
 		}
 	
-	public void paintComponent(Graphics g) {
+	public void paintComponent(Graphics g)
+	{
 		super.paintComponent(g);
-
-		//Compute interior coordinates
+         //Compute interior coordinates
 		Insets myInsets = getInsets();
 		int x1 = myInsets.left;
 		int y1 = myInsets.top;
@@ -71,7 +69,7 @@ public class MyPanel1 extends JPanel{
 		int height = y2 - y1;
 
 		//Paint the background
-		g.setColor(Color.GRAY);
+		g.setColor(Color.YELLOW);
 		g.fillRect(x1, y1, width + 1, height + 1);
 
 		//By default, the grid will be 9x9 
@@ -95,9 +93,47 @@ public class MyPanel1 extends JPanel{
 				}
 			}
 		
+		for (int x = 0; x < TOTAL_COLUMNS; x++) {
+			for (int y = 0; y < TOTAL_ROWS; y++) {
+				if ( (minesAround[x][y] != 0) && colorArray[x][y] != Color.BLACK) {
+					int counter = minesAround[x][y];
+					g.setColor(Color.RED);
+					g.drawString(String.valueOf(counter), x1 + GRID_X + (x * (INNER_CELL_SIZE + 1)) + 10, y1 + GRID_Y + (y * (INNER_CELL_SIZE + 1)) + 20);
+					
+					}
+				}
+			}
 		
 		}
-	
+public void revealAdjacent(int x, int y){
+		
+		if((x<0)||(y<0) || (x>=9)||(y>=9)){return;}
+		
+		if(MyMouseAdapter1.Mines.compareSelec(x,y)){return;
+		}
+			
+			 if(MyMouseAdapter1.Mines.neighboringMines(x, y)){
+         		
+         		// Count number of mines around click.
+         		 
+         		int counter = MyMouseAdapter1.Mines.minesNearbyCounter(x, y);
+         		 
+         		colorArray[x][y] = Color.GRAY;
+         		minesAround[x][y] = counter;
+	            repaint();
+	            	
+	            return;
+			 }
+			 else {
+					
+					if(colorArray[x][y] == Color.GRAY){return;}
+					
+					colorArray[x][y] = Color.GRAY;
+					revealAdjacent(x-1, y);
+					revealAdjacent(x+1, y);
+					revealAdjacent(x, y-1);
+					revealAdjacent(x, y+1);}
+}
 	
 	// GETTERS
 	
@@ -152,5 +188,10 @@ public class MyPanel1 extends JPanel{
 		}
 		return y;
 	}
+	
+			 		
+			 
+		}
+	
 
-}
+	

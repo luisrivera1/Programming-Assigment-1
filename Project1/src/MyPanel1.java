@@ -1,10 +1,8 @@
-
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Insets;
 import java.util.Random;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -26,29 +24,27 @@ public class MyPanel1 extends JPanel
 	public int counterInitialize=0;
 	static public MinesPosition Mines;
 
-
-
-
-
 	public MyPanel1() {   // The Constructor
 
 		if (INNER_CELL_SIZE + (new Random()).nextInt(1) < 1) 
 		{	
 			throw new RuntimeException("INNER_CELL_SIZE must be positive!");
 		}
-		if (TOTAL_COLUMNS + (new Random()).nextInt(1) < 2) {	
+		if (TOTAL_COLUMNS + (new Random()).nextInt(1) < 2)
+		{	
 			throw new RuntimeException("TOTAL_COLUMNS must be at least 2!");
 		}
-		if (TOTAL_ROWS + (new Random()).nextInt(1) < 3) {	
+		if (TOTAL_ROWS + (new Random()).nextInt(1) < 3) 
+		{	
 			throw new RuntimeException("TOTAL_ROWS must be at least 3!");
 		}
 
-		for (int x = 0; x < TOTAL_COLUMNS; x++) {   
-			for (int y = 0; y < TOTAL_ROWS; y++) {
+		for (int x = 0; x < TOTAL_COLUMNS; x++) 
+		{   
+			for (int y = 0; y < TOTAL_ROWS; y++) 
+			{
 				colorArray[x][y] = Color.WHITE;
 				minesAround[x][y] = 0;
-
-
 			}
 		}
 	}
@@ -104,15 +100,12 @@ public class MyPanel1 extends JPanel
 					int counter = minesAround[x][y];
 					g.setColor(Color.RED);
 					g.drawString(String.valueOf(counter), x1 + GRID_X + (x * (INNER_CELL_SIZE + 1)) + 10, y1 + GRID_Y + (y * (INNER_CELL_SIZE + 1)) + 20);
-
 				}
 			}
 		}
-
 	}
 	public void revealAdjacent(int x, int y)
 	{
-
 		if((x<0)||(y<0) || (x>=9)||(y>=9)){return;
 		}
 
@@ -121,7 +114,6 @@ public class MyPanel1 extends JPanel
 
 		if(MyMouseAdapter1.Mines.neighboringMines(x, y))
 		{
-
 			// Count number of mines around click.
 
 			int counter = MyMouseAdapter1.Mines.minesNearbyCounter(x, y);
@@ -135,7 +127,10 @@ public class MyPanel1 extends JPanel
 		}
 		else {
 
-			if(colorArray[x][y] == Color.GRAY){return;}
+			if(colorArray[x][y] == Color.GRAY)
+			{
+				return;
+			}
 
 			colorArray[x][y] = Color.GRAY;
 			revealAdjacent(x-1, y);
@@ -144,10 +139,8 @@ public class MyPanel1 extends JPanel
 			revealAdjacent(x, y+1);
 
 			counterInitialize++;
-		}
-
+			}
 	}
-
 	// GETTERS
 
 	public int getGridX(int x, int y) 
@@ -212,9 +205,6 @@ public class MyPanel1 extends JPanel
 		}
 		return y;
 	}
-
-
-
 }
 
 

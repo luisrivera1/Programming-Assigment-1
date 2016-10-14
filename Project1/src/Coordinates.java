@@ -33,14 +33,6 @@ public class Coordinates
 	{
 		this.y = y;
 	}
-
-
-
-
-
-
-
-
 }
 
 

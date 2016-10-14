@@ -141,8 +141,6 @@ public class MyMouseAdapter1 extends MouseAdapter
 					myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					System.exit(0);
 				}
-
-
 			}
 
 			break; 
@@ -211,7 +209,7 @@ public class MyMouseAdapter1 extends MouseAdapter
 					Panel2.colorArray[grid_x2][grid_y2] = Color.WHITE;
 					Panel2.repaint();
 
-						if(counterInitialize2<10) // Flag Limiter 
+						if(counterInitialize2<10)  // Flag Limiter 
 					{
 						   counterInitialize2++;
 					}
@@ -245,7 +243,4 @@ public class MyMouseAdapter1 extends MouseAdapter
 	{
 		Mines = mines;
 	}
-
-
-
 }

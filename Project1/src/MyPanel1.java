@@ -66,7 +66,7 @@ public class MyPanel1 extends JPanel{
 		int height = y2 - y1;
 
 		//Paint the background
-		g.setColor(Color.YELLOW);
+		g.setColor(Color.GREEN);
 		g.fillRect(x1, y1, width + 1, height + 1);
 
 		//By default, the grid will be 9x9 

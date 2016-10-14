@@ -135,7 +135,7 @@ public class MyMouseAdapter1 extends MouseAdapter {
 		        			
 	            	 }
 
-	            	
+	            	//ADD C
 	            	// Paints grid as black when clicked on a mine.
 	            	
 	            	if(Mines.compareSelec(gridX, gridY)){
@@ -157,7 +157,7 @@ public class MyMouseAdapter1 extends MouseAdapter {
 	            }
 	              
 	            break; 
-	            
+	            //Add a comment 
 	        case 3:        //Right mouse button
 	        	
 	        	 Component c2 = e.getComponent();
@@ -189,7 +189,7 @@ public class MyMouseAdapter1 extends MouseAdapter {
 		            
 		            if(gridX2 >= 0 && gridX2 <= 8 && gridY2 >= 0 && gridY2 <= 8) {
 		            	if (Panel2.counterInitialize>=74) {
-		            		JOptionPane.showMessageDialog(null, "Congratulations, YOU WIN!!!");
+		            		JOptionPane.showMessageDialog(null, "CONGRATULATIONS YOU ARE A WINNER!!");
 		            		System.exit(0);
 							
 						}

@@ -24,13 +24,13 @@ public class MyPanel1 extends JPanel{
 	
 	public Color[][] colorArray = new Color[TOTAL_COLUMNS][TOTAL_ROWS];
 	public int minesAround[][] = new int[TOTAL_COLUMNS][TOTAL_ROWS];
-	//static public MineCoordinates Mines;
+	static public MinesPosition Mines;
 	
 	
 	
 	
 	
-	public MyPanel1() {   // Contructor
+	public MyPanel1() {   // The Constructor
 
 		if (INNER_CELL_SIZE + (new Random()).nextInt(1) < 1) {	
 			throw new RuntimeException("INNER_CELL_SIZE must be positive!");
@@ -55,8 +55,7 @@ public class MyPanel1 extends JPanel{
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-
-		//Compute interior coordinates
+         //Compute interior coordinates
 		Insets myInsets = getInsets();
 		int x1 = myInsets.left;
 		int y1 = myInsets.top;
@@ -66,7 +65,7 @@ public class MyPanel1 extends JPanel{
 		int height = y2 - y1;
 
 		//Paint the background
-		g.setColor(Color.GRAY);
+		g.setColor(Color.YELLOW);
 		g.fillRect(x1, y1, width + 1, height + 1);
 
 		//By default, the grid will be 9x9 
@@ -102,8 +101,35 @@ public class MyPanel1 extends JPanel{
 			}
 		
 		}
+public void revealAdjacent(int x, int y){
+		
+		if((x<0)||(y<0) || (x>=9)||(y>=9)){return;}
+		
+		if(MyMouseAdapter1.Mines.compareSelec(x,y)){return;
+		}
 			
-	
+			 if(MyMouseAdapter1.Mines.neighboringMines(x, y)){
+         		
+         		// Count number of mines around click.
+         		 
+         		int counter = MyMouseAdapter1.Mines.minesNearbyCounter(x, y);
+         		 
+         		colorArray[x][y] = Color.GRAY;
+         		minesAround[x][y] = counter;
+	            repaint();
+	            	
+	            return;
+			 }
+			 else {
+					
+					if(colorArray[x][y] == Color.GRAY){return;}
+					
+					colorArray[x][y] = Color.GRAY;
+					revealAdjacent(x-1, y);
+					revealAdjacent(x+1, y);
+					revealAdjacent(x, y-1);
+					revealAdjacent(x, y+1);}
+}
 	
 	// GETTERS
 	
@@ -158,28 +184,10 @@ public class MyPanel1 extends JPanel{
 		}
 		return y;
 	}
-	public void revealAdjacent(int x, int y){
-		
-		if((x<0)||(y<0) || (x>=9)||(y>=9)){return;}
-		
-		if(MyMouseAdapter1.Mines.compareSelec(x,y)){return;
-		}
-			
-			 if(MyMouseAdapter1.Mines.neighboringMines(x, y)){
-         		
-         		// Count number of mines around click.
-         		 
-         		int counter = MyMouseAdapter1.Mines.minesNearbyCounter(x, y);
-         		 
-         		colorArray[x][y] = Color.GRAY;
-         		minesAround[x][y] = counter;
-	            repaint();
-	            	
-	            return;
-	            
-			 }		
+	
+			 		
 			 
 		}
 	
 
-	}
+	

@@ -112,7 +112,7 @@ public class MyMouseAdapter1 extends MouseAdapter
 			{
 				if(Mines.neighboringMines(gridX, gridY)){
 
-					//Show number of mines around.
+					
 
 					int counter = Mines.minesNearbyCounter(gridX, gridY);
 

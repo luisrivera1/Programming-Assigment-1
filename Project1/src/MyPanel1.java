@@ -34,7 +34,7 @@ public class MyPanel1 extends JPanel{
 	
 	
 	
-	public MyPanel1() {   // Contructor
+	public MyPanel1() {   // Constructor
 
 		if (INNER_CELL_SIZE + (new Random()).nextInt(1) < 1) {	
 			throw new RuntimeException("INNER_CELL_SIZE must be positive!");

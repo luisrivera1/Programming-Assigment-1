@@ -101,10 +101,23 @@ public boolean compareSelec(int x, int y )
 			
 		}
 	}
+	return counter;
 	
-	return counter;	
+	
+	
+	
 	}
-		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 
 

@@ -14,7 +14,7 @@ public class Main1 {
 		MyMouseAdapter1 myMouseAdapter = new MyMouseAdapter1();
 		
 		myFrame.addMouseListener(myMouseAdapter);
-		myMouseAdapter.MinesArray();
+		myMouseAdapter.MinesArray(); //  added
 		myFrame.setVisible(true);
 	}
 

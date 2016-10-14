@@ -22,7 +22,7 @@ public class MinesPosition
 	}
 	public void ScatterMineCoord()
 	{
-		for (int bucky = 0; bucky < MinesPosition.length; bucky++) //Based on theNewBoston 
+		for (int bucky = 0; bucky < MinesPosition.length; bucky++)   //Based on theNewBoston 
 		{
 			MinesPosition [bucky] = CreateCoordinates();
 

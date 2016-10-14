@@ -83,7 +83,7 @@ public class MyMouseAdapter1 extends MouseAdapter
 		switch (e.getButton()) 
 		{
 
-		case 1:        //Left mouse button
+		case 1://Left mouse button
 			Component c = e.getComponent();
 			while (!(c instanceof JFrame)) 
 			{
@@ -113,7 +113,7 @@ public class MyMouseAdapter1 extends MouseAdapter
 				{ 
 					int counter = Mines.minesNearbyCounter(gridX, gridY);
 					
-					Color newColor = Color.GRAY;
+					Color newColor = Color.LIGHT_GRAY;
 					Panel.colorArray[gridX][gridY] = newColor;
 					Panel.minesAround[gridX][gridY] = counter;
 					Panel.counterInitialize++;
@@ -188,7 +188,7 @@ public class MyMouseAdapter1 extends MouseAdapter
 				{
 							if(counterInitialize2>0)
 					{
-						Panel2.colorArray[grid_x2][grid_y2] = Color.RED;
+						Panel2.colorArray[grid_x2][grid_y2] = Color.BLUE;
 						Panel2.repaint();
 						counterInitialize2--;
 					}

@@ -3,7 +3,6 @@ import java.awt.Component;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -83,7 +82,7 @@ public class MyMouseAdapter1 extends MouseAdapter
 		switch (e.getButton()) 
 		{
 
-		case 1://Left mouse button
+		case 1:        //Left mouse button
 			Component c = e.getComponent();
 			while (!(c instanceof JFrame)) 
 			{
@@ -113,7 +112,7 @@ public class MyMouseAdapter1 extends MouseAdapter
 				{ 
 					int counter = Mines.minesNearbyCounter(gridX, gridY);
 					
-					Color newColor = Color.LIGHT_GRAY;
+					Color newColor = Color.GRAY;
 					Panel.colorArray[gridX][gridY] = newColor;
 					Panel.minesAround[gridX][gridY] = counter;
 					Panel.counterInitialize++;
@@ -141,6 +140,8 @@ public class MyMouseAdapter1 extends MouseAdapter
 					myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					System.exit(0);
 				}
+
+
 			}
 
 			break; 
@@ -166,12 +167,13 @@ public class MyMouseAdapter1 extends MouseAdapter
 			e.translatePoint(-x3, -y3);
 			int x2 = e.getX();
 			int y2 = e.getY();
+			int grid_x2 = Panel2.getGridX(x2, y2);
+			int grid_y2 = Panel2.getGridY(x2, y2);
 			Panel2.x = x2;
 			Panel2.y = y2;
 			Panel2.mouseDownGridX = Panel2.getGridX(x2, y2);
 			Panel2.mouseDownGridY = Panel2.getGridY(x2, y2);
-			int grid_x2 = Panel2.getGridX(x2, y2);
-			int grid_y2 = Panel2.getGridY(x2, y2);
+			
 
 			Panel2.repaint();
 
@@ -192,9 +194,9 @@ public class MyMouseAdapter1 extends MouseAdapter
 						Panel2.repaint();
 						counterInitialize2--;
 					}
-						else if(counterInitialize2 == 0) // O
+						else if(counterInitialize2 == 0) //Flag Limit 
 					{
-						JOptionPane.showMessageDialog(c2, "You ran out of Flags");
+						JOptionPane.showMessageDialog(c2, "You ran out of Flags"); 
 					}
 
 				}
@@ -209,7 +211,7 @@ public class MyMouseAdapter1 extends MouseAdapter
 					Panel2.colorArray[grid_x2][grid_y2] = Color.WHITE;
 					Panel2.repaint();
 
-						if(counterInitialize2<10)  // Flag Limiter 
+						if(counterInitialize2<10) // Flag Limiter 
 					{
 						   counterInitialize2++;
 					}
@@ -220,9 +222,8 @@ public class MyMouseAdapter1 extends MouseAdapter
 			break;
 
 			default:    //Some other button (2 = Middle mouse button, etc.)
-			
 			break;
-		}
+ }
 	}
 
 	//Method that enables us to put the array in the main class
@@ -231,8 +232,7 @@ public class MyMouseAdapter1 extends MouseAdapter
 	{
 
 		Mines.ScatterMineCoord();
-
-	}
+		}
 
 	public MinesPosition getMines() 
 	{
@@ -243,4 +243,7 @@ public class MyMouseAdapter1 extends MouseAdapter
 	{
 		Mines = mines;
 	}
+
+
+
 }

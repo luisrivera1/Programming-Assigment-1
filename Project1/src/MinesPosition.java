@@ -42,6 +42,27 @@ public class MinesPosition
 
 	}
 	
+	public int  minesNearbyCounter(int  x, int y) 
+	{
+		int counter = 0 ;
+		for (int i = x-1; i <= x+1; i++) 
+		{
+			for (int j = y-1; j <= y+1; j++) 
+			{
+				if (!(i==x && j == y))
+				{
+					if (compareSelec(i,j))
+					{
+						counter++;	
+					}	
+				}	
+			}
+		}
+		return counter;
+		}
+
+	// Next: The Counter Method	
+	
 	public boolean CompareCoord(int x, int y, Coordinates a) // Method to compare two different coordinates
 	{ 
 		return x == a.getX() && y == a.getY();
@@ -75,25 +96,6 @@ public class MinesPosition
 		return false;
 
 	}
-	// Next: The Counter Method	
-	public int  minesNearbyCounter(int  x, int y) 
-	{
-		int counter = 0 ;
-		for (int i = x-1; i <= x+1; i++) 
-		{
-			for (int j = y-1; j <= y+1; j++) 
-			{
-				if (!(i==x && j == y))
-				{
-					if (compareSelec(i,j))
-					{
-						counter++;	
-					}	
-				}	
-			}
-		}
-		return counter;
-		}
 }
 
 

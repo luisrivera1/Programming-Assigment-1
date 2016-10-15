@@ -103,16 +103,16 @@ public class MyPanel1 extends JPanel
 					{
 						g.setColor(Color.CYAN);
 					}
-					else if (counter == 2) 
+						else if (counter == 2) 
 					{
-						g.setColor(Color.RED);
+						g.setColor(Color.PINK);
 					
 					}
-					else if (counter == 3) 
+							else if (counter == 3) 
 					{ 
 						g.setColor(Color.BLUE);
 					}
-					else if (counter == 4) {
+									else if (counter == 4) {
 						g.setColor(Color.ORANGE);
 					}
 					g.drawString(String.valueOf(counter), x1 + GRID_X + (x * (INNER_CELL_SIZE + 1)) + 15, y1 + GRID_Y + (y * (INNER_CELL_SIZE + 1)) + 25);
@@ -120,7 +120,7 @@ public class MyPanel1 extends JPanel
 			}
 		}
 	}
-	public void revealAdjacent(int x, int y)
+	public void revealAdjacent(int x,int y)
 	{
 		if((x<0)||(y<0) || (x>=9)||(y>=9)){return;
 		}
@@ -134,7 +134,7 @@ public class MyPanel1 extends JPanel
 
 			int counter = MyMouseAdapter1.Mines.minesNearbyCounter(x, y);
 
-			colorArray[x][y] = Color.LIGHT_GRAY;
+			colorArray[x][y] = Color.GRAY;
 			minesAround[x][y] = counter;
 			counterInitialize++;
 			repaint();
@@ -143,12 +143,12 @@ public class MyPanel1 extends JPanel
 		}
 		else {
 
-			if(colorArray[x][y] == Color.LIGHT_GRAY)
+			if(colorArray[x][y] == Color.GRAY)
 			{
 				return;
 			}
 
-			colorArray[x][y] = Color.LIGHT_GRAY;
+			colorArray[x][y] = Color.GRAY; 
 			revealAdjacent(x-1, y);
 			revealAdjacent(x+1, y);
 			revealAdjacent(x, y-1);

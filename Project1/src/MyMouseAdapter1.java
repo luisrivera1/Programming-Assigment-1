@@ -134,12 +134,12 @@ public class MyMouseAdapter1 extends MouseAdapter
 					Panel.colorArray[gridX][gridY] = newColor;
 					Panel.repaint();
 					
-//					JOptionPane.showMessageDialog(myFrame,
-//							"Sorry, but you clicked on a mine.",
-//							"GAME OVER",
-//							JOptionPane.WARNING_MESSAGE);
-//					myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//					System.exit(0);
+					JOptionPane.showMessageDialog(myFrame,
+							"Sorry, but you clicked on a mine.",
+							"GAME OVER",
+							JOptionPane.WARNING_MESSAGE);
+					myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					System.exit(0);
 				}
 			}
 

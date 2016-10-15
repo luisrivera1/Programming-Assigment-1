@@ -134,12 +134,12 @@ public class MyMouseAdapter1 extends MouseAdapter
 					Panel.colorArray[gridX][gridY] = newColor;
 					Panel.repaint();
 					
-					JOptionPane.showMessageDialog(myFrame,
-							"Sorry, but you clicked on a mine.",
-							"GAME OVER",
-							JOptionPane.WARNING_MESSAGE);
-					myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					System.exit(0);
+//					JOptionPane.showMessageDialog(myFrame,
+//							"Sorry, but you clicked on a mine.",
+//							"GAME OVER",
+//							JOptionPane.WARNING_MESSAGE);
+//					myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//					System.exit(0);
 				}
 			}
 
@@ -188,7 +188,7 @@ public class MyMouseAdapter1 extends MouseAdapter
 				{
 							if(counterInitialize2>0)
 					{
-						Panel2.colorArray[grid_x2][grid_y2] = Color.BLUE;
+						Panel2.colorArray[grid_x2][grid_y2] = Color.RED;
 						Panel2.repaint();
 						counterInitialize2--;
 					}
